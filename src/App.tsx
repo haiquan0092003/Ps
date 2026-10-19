@@ -118,7 +118,7 @@ export default function App() {
     setError(''); setNotice(''); setBusyId('auth');
     try {
       if (authMode === 'signup') {
-        const { data, error: signupError } = await supabase.auth.signUp({ email: authEmail.trim(), password: authPassword, options: { data: { display_name: authName.trim() || 'Player', avatar: (authName.trim() || 'P').slice(0, 1).toUpperCase() } } });
+        const { data, error: signupError } = await supabase.auth.signUp({ email: authEmail.trim(), password: authPassword, options: { emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`, data: { display_name: authName.trim() || 'Player', avatar: (authName.trim() || 'P').slice(0, 1).toUpperCase() } } });
         if (signupError) throw signupError;
         if (!data.session) setNotice('Tài khoản đã được tạo. Hãy kiểm tra email để xác nhận trước khi đăng nhập.');
       } else {
