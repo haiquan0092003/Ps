@@ -24,9 +24,10 @@ This is an application starter, not a deployed production site. You own and cont
 1. Create a new project in Supabase.
 2. Open the project's **SQL Editor**.
 3. Paste and run `supabase/migrations/20261019000000_initial.sql`.
-4. In **Project Settings → API** (or the project's Connect/API section), copy the Project URL and the public publishable/anon key.
-5. Do **not** use or expose the `service_role` secret key in the browser.
-6. For testing, check the Supabase Authentication email-confirmation configuration. If confirmations are enabled, confirm the verification email before signing in.
+4. Paste and run `supabase/migrations/20261020000000_recurring_missions.sql`.
+5. In **Project Settings → API** (or the project's Connect/API section), copy the Project URL and the public publishable/anon key.
+6. Do **not** use or expose the `service_role` secret key in the browser.
+7. For testing, check the Supabase Authentication email-confirmation configuration. If confirmations are enabled, confirm the verification email before signing in.
 
 ## 3. Run locally
 
@@ -73,7 +74,8 @@ The SQL migration is responsible for database access policies and reward RPCs. D
 ## Notes and limitations
 
 - AI chat integration is not included; it should be added through a server-side function and a provider API key stored as a secret.
-- Recurring mission auto-generation, streak rules, goal milestones, achievements, and analytics are not part of this first backend milestone yet.
+- Goal milestones, achievements, and advanced analytics are not part of this first backend milestone yet.
+- New daily and weekly missions automatically create their next occurrence after completion. Run the recurring-missions migration before using this feature.
 - Review authentication email flow and RLS in your own Supabase project before sharing the app with others.
 - No Supabase credentials are included. The app shows a setup screen until `.env` is configured.
 
